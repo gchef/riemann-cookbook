@@ -11,7 +11,7 @@ remote_file deb_pkg_full do
   not_if "test -e #{deb_pkg_full}"
 end
 
-dpkg_package deb_pkg do
+dpkg_package deb_pkg_full do
   not_if "test $(dpkg -s riemann | grep -c #{node[:riemann][:server][:version]}) -gt 0"
 end
 
